@@ -33,7 +33,8 @@ B. onSubmit Client Script
     Name: Prevent save if Assigned To missing
     Type: onSubmit
     
-    <img width="944" height="527" alt="image" src="https://github.com/user-attachments/assets/f17c2809-5792-4472-a0b8-c5aea4ac57f3" />
+   <img width="945" height="527" alt="image" src="https://github.com/user-attachments/assets/1d045b34-12b5-4194-9d75-87e728cf96d0" />
+
 
 C. onCellEdit Client Script
 
