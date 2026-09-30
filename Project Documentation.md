@@ -32,13 +32,15 @@ B. onSubmit Client Script
 
     Name: Prevent save if Assigned To missing
     Type: onSubmit
-    <img width="945" height="525" alt="image" src="https://github.com/user-attachments/assets/2d4ad23e-51f6-4032-a0af-1431da9766ac" />
+    
+    <img width="944" height="527" alt="image" src="https://github.com/user-attachments/assets/f17c2809-5792-4472-a0b8-c5aea4ac57f3" />
 
 C. onCellEdit Client Script
 
     Name: Prevent state change via list edit
     Type: onCellEdit | Field Name: State
-    <img width="948" height="533" alt="image" src="https://github.com/user-attachments/assets/df330ec8-2dc4-46c0-8329-69c3c2b930bd" />
+  
+<img width="944" height="527" alt="image" src="https://github.com/user-attachments/assets/d6cdce64-ec2b-4c5c-945c-4c5ae6aed0bf" />
 
 
 
