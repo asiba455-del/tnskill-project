@@ -1,16 +1,16 @@
-Implement Client Script & UI Policy (Incident)Problem StatementIncident records often require consistent and accurate data entry to ensure effective triage, routing, and resolution. However, relying solely on user awareness and manual checks can lead to incomplete, inconsistent, or incorrect data being submitted. This can impact reporting accuracy, SLA compliance, and overall service quality. To address this challenge, there is a need to enforce conditional field behavior and validation directly at the user interface level. Implementing standardized UI Policies and Client Scripts helps control field visibility, mandatory status, and save-time validation, ensuring that Incident records meet defined business rules before they are submitted.   ObjectiveThe objective of the Implement Client Script & UI Policy (Incident) project is to demonstrate how ServiceNow client-side controls can be used to enforce data integrity on Incident records. This implementation showcases how UI Policies and Client Scripts can dynamically make fields mandatory, auto-populate values, control field behavior, and prevent record submission when required conditions are not met. The solution ensures that Incidents are created with complete and valid information, improving data quality and consistency across the platform.   SkillsIncident Management   UI Policy   UI Policy Actions   Client Scripts   Form Validation   Task 1: Create UI Policy on IncidentActivity 1: Create UI PolicyLog in to the ServiceNow instance with administrative or configuration access.   Navigate to: System UI → UI Policies.   Click New to create a new UI Policy record.   Fill in the following details:Name: High Impact Control
-(This name clearly represents the purpose of the policy, which is to apply additional controls when an Incident has a high impact.)   Table: Incident
-(Specifies that the UI Policy applies to Incident records.)   Active: true
-(Enables the UI Policy so it is enforced on the Incident form.)   Configure the Conditions section as follows:Field: Impact   Operator: is   Value: 1 - High   This condition ensures the UI Policy is triggered only when the Incident impact is set to High.   Add UI Policy Action: Assignment group.   Check Mandatory.   Set Reverse if false to true.
-(This ensures that when the condition is not met, any field changes applied by the policy are automatically reverted.)   Review the configuration to ensure accuracy.   Click Submit to save the UI Policy.   Task 2: Create UI Policy Action - UrgencyActivity 1: Configure the Urgency FieldOpen the UI Policy Actions: Go to the High Impact Control UI Policy you created earlier. Scroll down to the UI Policy Actions related list. This is where you define the specific behavior of fields when the policy conditions are met.   Create a New Action: Click New to create a UI Policy Action. This lets you configure how individual fields behave when the UI Policy is triggered.   Fill in the Action Details:Field name: Urgency
-(Select the Urgency field on the Incident form. This is the field you want to control.)   Read-only: true
-(Check this option to make the Urgency field read-only whenever the UI Policy condition is met [Impact = High]. Users will be able to see the field but cannot change its value.)   Visible: Leave this field as is (do not change).
-(By leaving it unchanged, the field will remain visible on the form, but its behavior will be controlled by the Read-only setting.)   Submit the Action: Click Submit to save the UI Policy Action. The action is now linked to the High Impact Control UI Policy and will automatically apply to the Urgency field when an Incident has High Impact.   Optional Verification: To test the action:   Open an Incident record.   Set the Impact field to High.   Check that the Urgency field becomes read-only.   Change Impact to a different value to confirm that the field reverts back if needed.   Task 3: Create onChange Client ScriptActivity 1: Create Client ScriptNavigate to Client Scripts: Go to System UI → Client Scripts.   Click New to create a new Client Script.   Fill in the details:Name: Auto set urgency for high impact (clearly shows the purpose)   Table: Incident (the script runs only on Incident records)   Type: onChange (executes when a field value changes)   Field name: Impact (triggers the script when Impact is updated)   Active: true (ensures the script runs immediately)   Paste the script in the script editor section.   Click Submit to save the Client Script.   Verify: Open an Incident record and change the Impact field to High. The Urgency field should update automatically.   Script:JavaScriptfunction onChange(control, oldValue, newValue, isLoading) {
-    if (isLoading || newValue == '') {
-        return;
-    }
-    if (newValue == '1') {
-        g_form.setValue('urgency', '1');
-        g_form.addInfoMessage('Urgency set to High for High impact incident.');
-    }
-}
+Phase 1: Brainstorming & Ideation
+Project Title
+
+Implement Client Script & UI Policy (Incident)
+Problem Statement
+
+Incident records in ServiceNow often require consistent and accurate data entry to ensure effective triage, routing, and resolution. Relying solely on manual checks or user awareness leads to incomplete, inconsistent, or incorrect data being submitted (e.g., missing assigned users or unauthorized state changes from list views). This impacts reporting accuracy, SLA compliance, and overall service quality.
+Proposed Solution
+
+To resolve this, we implement client-side controls using ServiceNow UI Policies and Client Scripts:
+
+    Dynamic field behavior based on Incident Impact.
+    Mandatory field validations prior to form submission.
+    Automation of field values to reduce manual input errors.
+    Prevention of unauthorized field edits directly from list views.
+ 
