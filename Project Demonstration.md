@@ -7,7 +7,7 @@ A walkthrough of the ServiceNow Incident management client-side configurations�
 
 Click the link below to watch the full ServiceNow configuration and testing demonstration:
 
-🎥 **[Watch Project Demo Video]
+🎥 **[Watch Project Demo Video] ("https://drive.google.com/file/d/1cPXzEQmKA6I8HFYzkduveq8VID-jS_zE/view?usp=sharing")
 
 🎯 Final Project Summary
 
